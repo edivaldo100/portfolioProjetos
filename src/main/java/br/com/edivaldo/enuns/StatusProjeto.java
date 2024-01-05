@@ -19,4 +19,14 @@ public enum StatusProjeto {
 	public String getDescricao() {
 		return descricao;
 	}
+	
+	public static boolean podeDeletar(StatusProjeto s) {
+		switch(s) {
+		case INICIADO:
+		case EM_ANDAMENTO:
+		case ENCERRADO:
+			return false;
+		}
+		return true;
+	}
 }
