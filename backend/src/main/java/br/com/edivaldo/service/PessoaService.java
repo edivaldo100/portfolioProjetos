@@ -2,6 +2,7 @@ package br.com.edivaldo.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,5 +30,9 @@ public class PessoaService {
 
 	public void removerPorId(Long id) {
 		repository.deleteById(id);
+	}
+
+	public List<Pessoa> listaPessoaFuncionarios() {
+		return repository.findAll().stream().filter(p -> p.isFuncionario()).collect(Collectors.toList());
 	}
 }

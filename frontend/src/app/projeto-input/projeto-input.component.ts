@@ -11,6 +11,15 @@ import {MatInputModule} from '@angular/material/input';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
 import { Projeto } from '../Projeto';
+import { Funcionario } from '../Funcionario';
+import { MatSelect } from '@angular/material/select';
+
+import {NgFor} from '@angular/common';
+
+interface Food {
+  value: string;
+  viewValue: string;
+}
 
 @Component({
   selector: 'app-projeto-input',
@@ -26,7 +35,8 @@ import { Projeto } from '../Projeto';
             FormsModule,
             MatCardModule,
             MatCheckboxModule,
-            MatRadioModule],
+            MatRadioModule,
+            NgFor],
 })
 export class ProjetoInputComponent {
   @ViewChild('projetoForm') projetoForm!: NgForm;
@@ -34,6 +44,20 @@ export class ProjetoInputComponent {
   @Output() newDataEvent = new EventEmitter();
 
   constructor(private http: HttpClient) {}
+  funcionarioSelecionado: string = "";
+  funcionarios: Funcionario[] = [];
+
+  foods: Food[] = [
+    {value: 'steak-0', viewValue: 'Steak'},
+    {value: 'pizza-1', viewValue: 'Pizza'},
+    {value: 'tacos-2', viewValue: 'Tacos'},
+  ];
+
+  ngOnInit(): void {
+    this.http.get<Funcionario[]>(
+      "http://localhost:8080/pessoa/funcionarios"
+    ).subscribe(data => this.funcionarios = data);
+  }
 
   onSubmit(): void {
     this.http.post<Projeto>(
@@ -43,4 +67,10 @@ export class ProjetoInputComponent {
       this.newDataEvent.emit(data);
       });
   }
+
+  changeAction(f: any) {
+    console.log(f);
+    console.log(f);
+  }
+
 }

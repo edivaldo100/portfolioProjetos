@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 
 import { Projeto } from "./Projeto";
+import { Funcionario } from "./Funcionario";
 
 @Component({
   selector: "app-root",
@@ -11,13 +12,17 @@ import { Projeto } from "./Projeto";
 export class AppComponent {
 
   projetos: Projeto[] = [];
-
+ // funcionarios: Funcionario[] = [];
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
     this.http.get<Projeto[]>(
       "http://localhost:8080/projetos"
     ).subscribe(data => this.projetos = data);
+
+  //  this.http.get<Funcionario[]>(
+   //   "http://localhost:8080/pessoa/funcionarios"
+   // ).subscribe(data => this.funcionarios = data);
   }
 
   appendData(novoProjeto: any): void {

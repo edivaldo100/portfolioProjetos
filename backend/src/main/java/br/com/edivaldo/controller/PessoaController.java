@@ -41,6 +41,12 @@ public class PessoaController {
         return pessoaService.listar();
     }
 
+    @GetMapping("/funcionarios")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Pessoa> listaPessoaFuncionarios(){
+        return pessoaService.listaPessoaFuncionarios();
+    }
+    
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Pessoa buscarPessoaPorId(@PathVariable("id") Long id){

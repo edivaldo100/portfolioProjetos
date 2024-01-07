@@ -8,7 +8,7 @@ import { DisplayComponent } from './display/display.component';
 import { ProjetoInputComponent } from './projeto-input/projeto-input.component';
 import { EmpacotadorComponent } from './empacotador/empacotador.component';
 import { ProjetoEditComponent } from './projeto-edit/projeto-edit.component';
-
+import {MatSelectModule} from '@angular/material/select';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +20,8 @@ import { ProjetoEditComponent } from './projeto-edit/projeto-edit.component';
     DisplayComponent,
     ProjetoInputComponent,
     EmpacotadorComponent,
-    ProjetoEditComponent
+    ProjetoEditComponent,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

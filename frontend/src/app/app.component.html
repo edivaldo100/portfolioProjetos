@@ -1,10 +1,10 @@
 <div class="main">
   <div class="add">
-  <h3 style="text-align: center;">Adicione um novo projeto</h3>
+  <h3 style="text-align: center;">NOVO PROJETO</h3>
   <app-projeto-input (newDataEvent)="appendData($event)"></app-projeto-input>
   </div>
 <div>
-  <h3>MEUS PROJETOS</h3>
+  <h3 style="text-align: center;">MEUS PROJETOS</h3>
   <app-empacotador *ngFor ="let projeto of projetos"
   (removeItemEvent)="removeItem($event)"
   [projeto] = "projeto"></app-empacotador>

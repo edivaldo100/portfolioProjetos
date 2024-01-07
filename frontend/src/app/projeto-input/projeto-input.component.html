@@ -46,9 +46,17 @@
     </mat-form-field>
   
     <mat-form-field class="p-full-width">
-      <mat-label>idGerente</mat-label>
-      <input name="idGerente" ngModel required matInput>
+      <mat-label>Gerente</mat-label>
+      <mat-select name="idGerente" required ngModel>
+        <mat-option *ngFor="let f of funcionarios" [value]="f.id">
+          {{f.nome}}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
+
+
+
+
     <p style="text-align: center;">
     <button type="submit" mat-raised-button color="primary">Gravar Projeto</button>
     </p>
