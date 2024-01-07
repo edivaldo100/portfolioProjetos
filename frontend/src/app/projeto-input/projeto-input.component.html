@@ -1,4 +1,5 @@
-<form #projetoForm="ngForm" class="p-form" (ngSubmit)="onSubmit()">
+<div class="p-form">
+<form #projetoForm="ngForm" class="p-form2" (ngSubmit)="onSubmit()">
 
     <mat-form-field class="p-full-width">
       <mat-label>nome</mat-label>
@@ -48,7 +49,8 @@
       <mat-label>idGerente</mat-label>
       <input name="idGerente" ngModel required matInput>
     </mat-form-field>
-    
-    <button type="submit" mat-raised-button color="primary">Submit</button>
+    <p style="text-align: center;">
+    <button type="submit" mat-raised-button color="primary">Gravar Projeto</button>
+    </p>
   </form>
-  
+</div>

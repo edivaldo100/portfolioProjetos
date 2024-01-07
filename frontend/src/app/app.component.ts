@@ -25,9 +25,26 @@ export class AppComponent {
   }
 
   removeItem(projetosId: number): void {
-    this.http.delete(
-      "http://localhost:8080/projetos/" + projetosId,
-    ).subscribe(data => this.projetos = this.projetos.filter((projeto: Projeto) => projeto.id != projetosId));
+    
+    this.removeItemService(projetosId);
   }
 
+  removeItemService(projetosId: number): void {
+    var resp = this.http.delete(
+      "http://localhost:8080/projetos/" + projetosId,
+    ).subscribe(
+      data => {
+        console.log(data);
+        this.projetos = this.projetos.filter((projeto: Projeto) => projeto.id != projetosId)
+      }, error => {
+        console.log("--------ERRO--->");
+        console.log(error);
+        if(error.error.codigo == 400)
+        alert(error.error.mensagem);
+        
+      }
+      );
+      console.log(resp);
+   
+  }
 }

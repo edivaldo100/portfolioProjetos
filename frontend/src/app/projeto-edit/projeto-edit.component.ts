@@ -47,6 +47,10 @@ export class ProjetoEditComponent {
       //this.router.navigateByUrl('http://localhost:4200');
       //this.router.navigate(['http://localhost:4200'])
 
-      window.location.reload();
+      this.reseta()
+  }
+
+  reseta(){
+    window.location.reload();
   }
 }
