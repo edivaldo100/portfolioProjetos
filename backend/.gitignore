@@ -13,6 +13,10 @@ local.properties
 .settings/
 .loadpath
 .recommenders
+.angular/
+.project
+.classpath
+/target/
 
 # External tool builders
 .externalToolBuilders/

@@ -32,7 +32,8 @@ export class ProjetoEditComponent {
 
   @Output() editDataEvent = new EventEmitter();
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient) {}
 
   onSubmit(): void {
     this.http.put<Projeto>(
@@ -41,5 +42,11 @@ export class ProjetoEditComponent {
     ).subscribe(data => {
       this.editDataEvent.emit(data);
       });
+
+      //this.router.navigate('http://localhost:4200');
+      //this.router.navigateByUrl('http://localhost:4200');
+      //this.router.navigate(['http://localhost:4200'])
+
+      window.location.reload();
   }
 }
