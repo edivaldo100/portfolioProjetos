@@ -35,9 +35,14 @@
         <mat-form-field class="p-full-width">
           <mat-label>status</mat-label>
           <mat-select name="status" required [(ngModel)]="projeto.status" required matInput>
-            <mat-option value="EM_ANALISE">EM_ANALISE</mat-option>
-            <mat-option value="INICIADO">INICIADO</mat-option>
-            <mat-option value="ENCERRADO">ENCERRADO</mat-option>
+            <mat-option value="EM_ANALISE">em análise</mat-option>
+            <mat-option value="ANALISE_REALIZADA">análise realizada</mat-option>
+            <mat-option value="ANALISE_APROVADA">análise aprovada</mat-option>
+            <mat-option value="INICIADO">iniciado</mat-option>
+            <mat-option value="PLANEJADO">planejado</mat-option>
+            <mat-option value="EM_ANDAMENTO">em andamento</mat-option>
+            <mat-option value="ENCERRADO">encerrado</mat-option>
+            <mat-option value="CANCELADO">cancelado</mat-option>
           </mat-select>
         </mat-form-field>
   
@@ -57,9 +62,15 @@
       </mat-form-field>
     
       <mat-form-field class="p-full-width">
-        <mat-label>idGerente</mat-label>
-        <input name="idGerente" [(ngModel)]="projeto.idGerente" required matInput>
+        <mat-label>Gerente</mat-label>
+        <mat-select name="idGerente" required ngModel [(ngModel)]="projeto.idGerente">
+          <mat-option *ngFor="let f of funcionarios" [value]="f.id">
+            {{f.nome}}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
+
+
       <p>
       <button type="submit" mat-raised-button color="primary">Atualizar</button>
       <button onclick="reseta()" mat-raised-button color="warn">Cancelar</button>

@@ -26,6 +26,8 @@ public class ProjetoDto implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	private Long id;
+	
 	private String nome;
 
 	private Date dataInicio;
@@ -43,5 +45,7 @@ public class ProjetoDto implements Serializable {
 	private Risco risco;
 
 	private Long idGerente;
+	
+	private String gerente;
 
 }

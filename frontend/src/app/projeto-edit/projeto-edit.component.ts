@@ -11,6 +11,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
 import { Projeto } from '../Projeto';
+import { Funcionario } from '../Funcionario';
+import {NgFor} from '@angular/common';
 @Component({
   selector: 'app-projeto-edit',
   templateUrl: './projeto-edit.component.html',
@@ -25,15 +27,21 @@ import { Projeto } from '../Projeto';
             FormsModule,
             MatCardModule,
             MatCheckboxModule,
-            MatRadioModule],
+            MatRadioModule,NgFor],
 })
 export class ProjetoEditComponent {
   @Input() projeto: Projeto = new Projeto(0, "", new Date(), new Date(), new Date(), "", "","","",0);
 
   @Output() editDataEvent = new EventEmitter();
-
+  funcionarios: Funcionario[] = [];
   constructor(
     private http: HttpClient) {}
+
+    ngOnInit(): void {
+      this.http.get<Funcionario[]>(
+        "http://localhost:8080/pessoa/funcionarios"
+      ).subscribe(data => this.funcionarios = data);
+    }
 
   onSubmit(): void {
     this.http.put<Projeto>(

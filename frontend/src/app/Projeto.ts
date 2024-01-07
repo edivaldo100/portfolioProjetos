@@ -10,6 +10,6 @@ export class Projeto {
   public orcamento: string,
   public risco: string,
   public idGerente: number,
-
+  public gerente?: string | null,
   ) {}
 }

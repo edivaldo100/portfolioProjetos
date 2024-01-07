@@ -1,6 +1,8 @@
 package br.com.edivaldo.service;
 
 import java.net.URI;
+import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,7 +15,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import br.com.edivaldo.dtos.ProjetoDto;
+import br.com.edivaldo.entity.Pessoa;
 import br.com.edivaldo.entity.Projeto;
+import br.com.edivaldo.enuns.Risco;
 import br.com.edivaldo.enuns.StatusProjeto;
 import br.com.edivaldo.exception.AppError;
 import br.com.edivaldo.exception.RestException;
@@ -30,6 +34,9 @@ public class ProjetoService {
 	private ProjetoRepository repository;
 	@Autowired
 	private ModelMapper modelMapper;
+	
+	@Autowired
+	private PessoaService pessoaService;
 	//@Autowired
 	//private ProjetosMapper projetoMapper;// = Mappers.getMapper(ProjetosMapper.class);
 
@@ -40,9 +47,11 @@ public class ProjetoService {
 
 	public ResponseEntity<Object> listar() {
 		List<Projeto> lista = repository.findAll();
-		//List<ProjetoDto> projetoDtos = projetoMapper.toProjetoDtos(lista);
-		return ResponseEntity.status(HttpStatus.OK).body(lista);
+		List<ProjetoDto> projetoDtos = toProjetoDtos(lista);
+		return ResponseEntity.status(HttpStatus.OK).body(projetoDtos);
 	}
+
+
 
 	public Optional<Projeto> buscarPorId(Long id) {
 		return repository.findById(id);
@@ -96,5 +105,20 @@ public class ProjetoService {
 	
 	public ProjetoDto criarProjetoDto(ProjetoDto rojetoDto) {
 		return rojetoDto;
+	}
+	
+	private List<ProjetoDto> toProjetoDtos(List<Projeto> lista) {
+		List<ProjetoDto> listaDto = new ArrayList<ProjetoDto>();
+		for (Projeto projeto : lista) {
+				
+			Optional<Pessoa> buscarPorId = pessoaService.buscarPorId(projeto.getIdGerente());
+			if(buscarPorId.isPresent()) {
+				String nome = buscarPorId.get().getNome();
+				listaDto.add(new ProjetoDto(projeto.getId(), projeto.getNome(), projeto.getDataInicio(), projeto.getDataPrevisaoFim(), projeto.getDataFim(), projeto.getDescricao(), projeto.getStatus(), projeto.getOrcamento(), projeto.getRisco(), projeto.getIdGerente(), nome));
+			}else {
+				listaDto.add(new ProjetoDto(projeto.getId(), projeto.getNome(), projeto.getDataInicio(), projeto.getDataPrevisaoFim(), projeto.getDataFim(), projeto.getDescricao(), projeto.getStatus(), projeto.getOrcamento(), projeto.getRisco(), projeto.getIdGerente(), ""));
+			}
+		}
+		return listaDto;
 	}
 }

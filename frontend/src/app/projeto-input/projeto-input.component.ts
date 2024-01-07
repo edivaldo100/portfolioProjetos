@@ -47,12 +47,6 @@ export class ProjetoInputComponent {
   funcionarioSelecionado: string = "";
   funcionarios: Funcionario[] = [];
 
-  foods: Food[] = [
-    {value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'},
-  ];
-
   ngOnInit(): void {
     this.http.get<Funcionario[]>(
       "http://localhost:8080/pessoa/funcionarios"
@@ -66,6 +60,8 @@ export class ProjetoInputComponent {
     ).subscribe(data => {
       this.newDataEvent.emit(data);
       });
+
+      window.location.reload();
   }
 
   changeAction(f: any) {
