@@ -1,0 +1,14 @@
+<p>
+    <app-projeto-edit *ngIf="editable == true"
+                      (editDataEvent)="handleSaveEdition($event)"
+                      [projeto]="projeto"></app-projeto-edit>
+
+    
+  
+    <app-display *ngIf="editable == false"
+                      (removeItemEvent)="removeItemEvent.emit($event)"
+                      (editItemEvent)="handleEditClick()"
+                      [projeto]="projeto"></app-display>
+
+  </p>
+  

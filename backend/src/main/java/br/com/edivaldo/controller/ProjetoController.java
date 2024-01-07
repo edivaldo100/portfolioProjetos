@@ -16,7 +16,7 @@ import br.com.edivaldo.exception.RestException;
 import br.com.edivaldo.service.ProjetoService;
 
 @RestController
-@RequestMapping("/projeto")
+@RequestMapping("/projetos")
 public class ProjetoController {
 
 	@Autowired

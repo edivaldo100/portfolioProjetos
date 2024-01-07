@@ -1,35 +1,46 @@
 package br.com.edivaldo.service;
 
+import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
+import org.mapstruct.Mapper;
+import org.mapstruct.factory.Mappers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import br.com.edivaldo.dtos.ProjetoDto;
 import br.com.edivaldo.entity.Projeto;
 import br.com.edivaldo.enuns.StatusProjeto;
 import br.com.edivaldo.exception.AppError;
 import br.com.edivaldo.exception.RestException;
+import br.com.edivaldo.mappers.ProjetosMapper;
 import br.com.edivaldo.repository.ProjetoRepository;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 @Service
+@RequiredArgsConstructor
 public class ProjetoService {
 
 	@Autowired
 	private ProjetoRepository repository;
 	@Autowired
 	private ModelMapper modelMapper;
+	//@Autowired
+	//private ProjetosMapper projetoMapper;// = Mappers.getMapper(ProjetosMapper.class);
 
 	public ResponseEntity<Projeto> salvar(Projeto p) {
-		// return repository.save(p);
-		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(p));
+		Projeto projeto = repository.save(p);
+		return ResponseEntity.created(URI.create("/projetos/" +projeto.getId())).body(projeto);
 	}
 
 	public ResponseEntity<Object> listar() {
 		List<Projeto> lista = repository.findAll();
+		//List<ProjetoDto> projetoDtos = projetoMapper.toProjetoDtos(lista);
 		return ResponseEntity.status(HttpStatus.OK).body(lista);
 	}
 
@@ -81,5 +92,9 @@ public class ProjetoService {
 
 	private AppError responseApp(int codigo, String msg) {
 		return new AppError(codigo, msg);
+	}
+	
+	public ProjetoDto criarProjetoDto(ProjetoDto rojetoDto) {
+		return rojetoDto;
 	}
 }

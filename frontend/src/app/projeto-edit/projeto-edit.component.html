@@ -1,0 +1,59 @@
+<form #projetoForm="ngForm" (ngSubmit)="onSubmit()">
+
+    <mat-form-field class="p-full-width">
+      <mat-label>nome</mat-label>
+      <input name="nome"  [(ngModel)]="projeto.nome" required matInput>
+    </mat-form-field>
+  
+    <mat-form-field class="p-full-width">
+      <mat-label>dataInicio</mat-label>
+      <input name="dataInicio" [(ngModel)]="projeto.dataInicio" required matInput>
+    </mat-form-field>
+  
+    <mat-form-field class="p-full-width">
+      <mat-label>dataPrevisaoFim</mat-label>
+      <input name="dataPrevisaoFim" [(ngModel)]="projeto.dataPrevisaoFim" required matInput>
+    </mat-form-field>
+  
+    <mat-form-field class="p-full-width">
+        <mat-label>dataFim</mat-label>
+        <input name="dataFim" [(ngModel)]="projeto.dataFim" required matInput>
+      </mat-form-field>
+    
+      <mat-form-field class="p-full-width">
+        <mat-label>descricao</mat-label>
+        <input name="descricao" [(ngModel)]="projeto.descricao" required matInput>
+      </mat-form-field>
+    
+      <mat-form-field class="p-full-width">
+        <mat-label>status</mat-label>
+        <mat-select name="status" required [(ngModel)]="projeto.status" required matInput>
+          <mat-option value="EM_ANALISE">EM_ANALISE</mat-option>
+          <mat-option value="INICIADO">INICIADO</mat-option>
+          <mat-option value="ENCERRADO">ENCERRADO</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+      <mat-form-field class="p-full-width">
+        <mat-label>orcamento</mat-label>
+        <input name="orcamento" [(ngModel)]="projeto.orcamento" required matInput>
+      </mat-form-field>
+    
+    <mat-form-field class="p-full-width">
+      <mat-label>risco</mat-label>
+      <mat-select name="risco" required [(ngModel)]="projeto.risco" required matInput>
+        <mat-option value="ALTO">ALTO</mat-option>
+        <mat-option value="MEDIO">MEDIO</mat-option>
+        <mat-option value="BAIXO">BAIXO</mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <mat-form-field class="p-full-width">
+      <mat-label>idGerente</mat-label>
+      <input name="idGerente" [(ngModel)]="projeto.idGerente" required matInput>
+    </mat-form-field>
+    
+    <button type="submit" mat-raised-button color="primary">Atualizar</button>
+  </form>
+  
