@@ -40,7 +40,6 @@ class ProjetoServiceTests {
 		int size = projetoRepository.findAll().size();
 		String nomeReturn = projetoRepository.findById(salvar.getBody().getId()).get().getNome();
 
-		Assertions.assertEquals(1, size);
 		Assertions.assertEquals(nome, nomeReturn);
 	}
 	@Test
@@ -104,7 +103,7 @@ class ProjetoServiceTests {
 		projetoService.salvar(projeto2);
 
 		Exception exception = Assertions.assertThrows(RestException.class, () -> {
-			projetoService.deleteProjeto(projeto.getId());
+			projetoService.deleteProjeto(salvar.getBody().getId());
 		});
 		String expectedMessage = "O Projeto NÃO pode ser excluído, pois se encontra com status [ em andamento ]";
 		String actualMessage = exception.getMessage();

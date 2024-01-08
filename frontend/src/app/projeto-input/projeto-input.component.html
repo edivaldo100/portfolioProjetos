@@ -1,23 +1,23 @@
 <div class="p-form">
 <form #projetoForm="ngForm" class="p-form2" (ngSubmit)="onSubmit()">
 
-    <mat-form-field class="p-full-width">
+    <mat-form-field>
       <mat-label>nome</mat-label>
       <input name="nome" ngModel required matInput>
     </mat-form-field>
   
     <mat-form-field class="p-full-width">
-      <mat-label>dataInicio</mat-label>
+      <mat-label>data Inicio ex: YYYY-MM-DD</mat-label>
       <input name="dataInicio" ngModel required matInput>
     </mat-form-field>
   
     <mat-form-field class="p-full-width">
-      <mat-label>dataPrevisaoFim</mat-label>
+      <mat-label>data Previsao Fim ex: YYYY-MM-DD</mat-label>
       <input name="dataPrevisaoFim" ngModel required matInput>
     </mat-form-field>
   
     <mat-form-field class="p-full-width">
-        <mat-label>dataFim</mat-label>
+        <mat-label>data Fim ex: YYYY-MM-DD</mat-label>
         <input name="dataFim" ngModel required matInput>
       </mat-form-field>
     

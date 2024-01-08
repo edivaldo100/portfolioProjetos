@@ -1,8 +1,9 @@
 .p-form {
  background-color: rgb(149, 182, 231);
+ align-items: center;
   }
   
   .p-full-width {
-   
+   width: 20%;
   }
   
