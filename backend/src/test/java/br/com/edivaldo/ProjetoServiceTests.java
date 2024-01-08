@@ -38,7 +38,7 @@ class ProjetoServiceTests {
 		ResponseEntity<Projeto> salvar = projetoService.salvar(projeto);
 
 		int size = projetoRepository.findAll().size();
-		String nomeReturn = projetoRepository.findById(1L).get().getNome();
+		String nomeReturn = projetoRepository.findById(salvar.getBody().getId()).get().getNome();
 
 		Assertions.assertEquals(1, size);
 		Assertions.assertEquals(nome, nomeReturn);
@@ -64,7 +64,7 @@ class ProjetoServiceTests {
 		ResponseEntity<Projeto> salvar = projetoService.salvar(projeto);
 		Projeto projeto2 = new Projeto(2L, nome, new java.sql.Date(Calendar.getInstance().getTime().getTime()), new java.sql.Date(Calendar.getInstance().getTime().getTime()), new java.sql.Date(Calendar.getInstance().getTime().getTime()), "simples projeto", StatusProjeto.EM_ANDAMENTO, 10000F, Risco.ALTO, 2L);
 		projetoService.salvar(projeto2);
-		ResponseEntity<Object> objectResponseEntity = projetoService.buscarProjeto(projeto.getId());
+		ResponseEntity<Object> objectResponseEntity = projetoService.buscarProjeto(salvar.getBody().getId());
 		int status = objectResponseEntity.getStatusCodeValue();
 		Assertions.assertEquals(status, 200);
 	}
@@ -91,7 +91,7 @@ class ProjetoServiceTests {
 		Projeto projeto2 = new Projeto(2L, nome, new java.sql.Date(Calendar.getInstance().getTime().getTime()), new java.sql.Date(Calendar.getInstance().getTime().getTime()), new java.sql.Date(Calendar.getInstance().getTime().getTime()), "simples projeto", StatusProjeto.ANALISE_REALIZADA, 10000F, Risco.ALTO, 2L);
 		projetoService.salvar(projeto2);
 		int size = projetoRepository.findAll().size();
-		projetoService.deleteProjeto(projeto.getId());
+		projetoService.deleteProjeto(salvar.getBody().getId());
 		int sizePos = projetoRepository.findAll().size();
 		Assertions.assertEquals(sizePos, size -1);
 	}

@@ -60,7 +60,7 @@ class PessoaServiceTests {
 		Pessoa pSalvo = pessoaService.salvar(p);
 		Pessoa p2 = new Pessoa(2L,nome,new java.sql.Date(Calendar.getInstance().getTime().getTime()),"12345678900",true);
 		Pessoa pSalvo2 = pessoaService.salvar(p2);
-		Optional<Pessoa> pOptional = pessoaService.buscarPorId(p2.getId());
+		Optional<Pessoa> pOptional = pessoaService.buscarPorId(pSalvo2.getId());
 		Assertions.assertTrue(pOptional.isPresent());
 	}
 
