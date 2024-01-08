@@ -62,16 +62,16 @@ public class MembroService {
 		repository.deleteById(id);
 	}
 
-	public ResponseEntity<Object> buscarProjeto(Long idprojeto, Long idpesoa) throws RestException {
-		Optional<Membro> buscarPorId = buscarPorId(new MembroIdentity(idprojeto, idpesoa));
-		
-		if(buscarPorId.isPresent()) {
-			return ResponseEntity.status(HttpStatus.OK).body(buscarPorId);
-		}else {
-			throw new RestException("Membro/Projeto NÃO foi localizado.");
-		}
-		
-	}
+//	public ResponseEntity<Object> buscarProjeto(Long idprojeto, Long idpesoa) throws RestException {
+//		Optional<Membro> buscarPorId = buscarPorId(new MembroIdentity(idprojeto, idpesoa));
+//
+//		if(buscarPorId.isPresent()) {
+//			return ResponseEntity.status(HttpStatus.OK).body(buscarPorId);
+//		}else {
+//			throw new RestException("Membro/Projeto NÃO foi localizado.");
+//		}
+//
+//	}
 
 	public ResponseEntity<Object> deleteMembro(Long idprojeto, Long idpessoa) throws Exception {
 		MembroIdentity membroIdentity = new MembroIdentity(idprojeto, idpessoa);
