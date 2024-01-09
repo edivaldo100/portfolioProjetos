@@ -110,13 +110,14 @@ public class ProjetoService {
 	private List<ProjetoDto> toProjetoDtos(List<Projeto> lista) {
 		List<ProjetoDto> listaDto = new ArrayList<ProjetoDto>();
 		for (Projeto projeto : lista) {
-				
-			Optional<Pessoa> buscarPorId = pessoaService.buscarPorId(projeto.getIdGerente());
-			if(buscarPorId.isPresent()) {
-				String nome = buscarPorId.get().getNome();
-				listaDto.add(new ProjetoDto(projeto.getId(), projeto.getNome(), projeto.getDataInicio(), projeto.getDataPrevisaoFim(), projeto.getDataFim(), projeto.getDescricao(), projeto.getStatus(), projeto.getOrcamento(), projeto.getRisco(), projeto.getIdGerente(), nome));
+			if(projeto.getIdGerente() != null){
+				Optional<Pessoa> buscarPorId = pessoaService.buscarPorId(projeto.getIdGerente());
+				if(buscarPorId.isPresent()) {
+					String nome = buscarPorId.get().getNome();
+					listaDto.add(new ProjetoDto(projeto.getId(), projeto.getNome(), projeto.getDataInicio(), projeto.getDataPrevisaoFim(), projeto.getDataFim(), projeto.getDescricao(), projeto.getStatus(), projeto.getOrcamento(), projeto.getRisco(), projeto.getIdGerente(), nome));
+				}
 			}else {
-				listaDto.add(new ProjetoDto(projeto.getId(), projeto.getNome(), projeto.getDataInicio(), projeto.getDataPrevisaoFim(), projeto.getDataFim(), projeto.getDescricao(), projeto.getStatus(), projeto.getOrcamento(), projeto.getRisco(), projeto.getIdGerente(), ""));
+				listaDto.add(new ProjetoDto(projeto.getId(), projeto.getNome(), projeto.getDataInicio(), projeto.getDataPrevisaoFim(), projeto.getDataFim(), projeto.getDescricao(), projeto.getStatus(), projeto.getOrcamento(), projeto.getRisco(), projeto.getIdGerente(), "não identificado"));
 			}
 		}
 		return listaDto;
