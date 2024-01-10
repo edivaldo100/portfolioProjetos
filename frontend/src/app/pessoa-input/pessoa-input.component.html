@@ -1,0 +1,31 @@
+<div class="p-form">
+    <form #pessoaForm="ngForm" class="p-form2" (ngSubmit)="onSubmit()">
+    
+        <mat-form-field class="p-full-width">
+          <mat-label>nome</mat-label>
+          <input name="nome" ngModel required matInput>
+        </mat-form-field>
+      
+        <mat-form-field class="p-full-width">
+          <mat-label>data nascimento ex: YYYY-MM-DD</mat-label>
+          <input name="datanascimento" ngModel required matInput>
+        </mat-form-field>
+      
+        <mat-form-field class="p-full-width">
+          <mat-label>cpf</mat-label>
+          <input name="cpf" ngModel required matInput>
+        </mat-form-field>
+      
+        
+        <section  class="p-full-width">
+            <mat-radio-group [(ngModel)]="labelPosition" name="funcionario">
+              <mat-radio-button class="example-margin" value=true>é funcionário</mat-radio-button>
+              <mat-radio-button class="example-margin" value=false>outros</mat-radio-button>
+            </mat-radio-group>
+          </section>
+
+        <p style="text-align: center;">
+        <button type="submit" mat-raised-button color="primary">Gravar Pessoa</button>
+        </p>
+      </form>
+    </div>

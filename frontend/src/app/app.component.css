@@ -1,7 +1,22 @@
-.add {
-    background-color: rgb(149, 182, 231);
-     }
 
-     .list {
-        background-color: rgb(134, 205, 247);
-         }
+
+     div.container {
+        background-color:rgba(105, 203, 115, 0.5);
+    }
+    div.op3 {
+      
+        text-align: center;
+     
+        position: relative;
+    }
+    div.op1 {
+        display: inline-block;
+        text-align: center;
+    }
+
+    div.op2 {
+        background-color:rgba(105, 203, 115, 0.5);
+        display: inline-block;
+        text-align: center;
+        float:right;
+    }

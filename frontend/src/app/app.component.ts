@@ -12,7 +12,8 @@ import { Funcionario } from "./Funcionario";
 export class AppComponent {
 
   projetos: Projeto[] = [];
- // funcionarios: Funcionario[] = [];
+  funcionarios: Funcionario[] = [];
+
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
@@ -20,17 +21,38 @@ export class AppComponent {
       "http://localhost:8080/projetos"
     ).subscribe(data => this.projetos = data);
 
-  //  this.http.get<Funcionario[]>(
-   //   "http://localhost:8080/pessoa/funcionarios"
-   // ).subscribe(data => this.funcionarios = data);
+    this.http.get<Funcionario[]>(
+      "http://localhost:8080/pessoa"
+    ).subscribe(data => this.funcionarios = data);
   }
 
   appendData(novoProjeto: any): void {
     this.projetos.push(novoProjeto);
   }
+  appendDataFunc(novoPessoa: any): void {
+    this.funcionarios.push(novoPessoa);
+  }
+
+  removeItemFunc(funcId: number): void {
+    var resp = this.http.delete(
+      "http://localhost:8080/pessoa/" + funcId,
+    ).subscribe(
+      data => {
+        console.log(data);
+        this.funcionarios = this.funcionarios.filter((funcionario: Funcionario) => funcionario.id != funcId)
+      }, error => {
+        console.log("--------ERRO--->");
+        console.log(error);
+        if(error.error.codigo == 400)
+        alert(error.error.mensagem);
+        
+      }
+      );
+      console.log(resp);
+  }
+  
 
   removeItem(projetosId: number): void {
-    
     this.removeItemService(projetosId);
   }
 

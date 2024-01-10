@@ -1,12 +1,20 @@
-<div class="main">
-  <div class="add">
-  <h3 style="text-align: center;">NOVO PROJETO</h3>
-  <app-projeto-input (newDataEvent)="appendData($event)"></app-projeto-input>
-  </div>
-<div>
-  <h3 style="text-align: center;">MEUS PROJETOS</h3>
-  <app-empacotador *ngFor ="let projeto of projetos"
-  (removeItemEvent)="removeItem($event)"
-  [projeto] = "projeto"></app-empacotador>
-  </div>
+<div class="container">
+
+    <div class="op1" style="width: 80%;">
+      
+      <app-projeto-input (newDataEvent)="appendData($event)"></app-projeto-input>
+   
+        <app-empacotador *ngFor ="let projeto of projetos"
+        (removeItemEvent)="removeItem($event)"
+        [projeto] = "projeto"></app-empacotador>
+      
+    </div>
+    <div class="op2"  style="width: 20%;">
+      <app-pessoa-input (newDataEvent)="appendDataFunc($event)"></app-pessoa-input>
+
+      <app-enpacotador-pessoa *ngFor ="let funcionario of funcionarios"
+      (removeItemEvent)="removeItemFunc($event)"
+      [funcionario] = "funcionario"></app-enpacotador-pessoa>
+
+    </div>
 </div>

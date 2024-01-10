@@ -1,0 +1,13 @@
+<p>
+    <app-pessoa-edit *ngIf="editable == true"
+                      (editDataEvent)="handleSaveEdition($event)"
+                      [funcionario]="funcionario"></app-pessoa-edit>
+
+    
+  
+    <app-display-pessoa *ngIf="editable == false"
+                      (removeItemEvent)="removeItemEvent.emit($event)"
+                      (editItemEvent)="handleEditClick()"
+                      [funcionario]="funcionario"></app-display-pessoa>
+
+  </p>

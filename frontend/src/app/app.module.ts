@@ -8,10 +8,15 @@ import { DisplayComponent } from './display/display.component';
 import { ProjetoInputComponent } from './projeto-input/projeto-input.component';
 import { EmpacotadorComponent } from './empacotador/empacotador.component';
 import { ProjetoEditComponent } from './projeto-edit/projeto-edit.component';
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule} from '@angular/material/select';
+import { PessoaInputComponent } from './pessoa-input/pessoa-input.component';
+import { DisplayPessoaComponent } from './display-pessoa/display-pessoa.component';
+import { EnpacotadorPessoaComponent } from './enpacotador-pessoa/enpacotador-pessoa.component';
+import { PessoaEditComponent } from './pessoa-edit/pessoa-edit.component';
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -21,7 +26,11 @@ import {MatSelectModule} from '@angular/material/select';
     ProjetoInputComponent,
     EmpacotadorComponent,
     ProjetoEditComponent,
-    MatSelectModule
+    MatSelectModule,
+    PessoaInputComponent,
+    DisplayPessoaComponent,
+    EnpacotadorPessoaComponent,
+    PessoaEditComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
