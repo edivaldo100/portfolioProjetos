@@ -63,13 +63,14 @@ ex: com curl
    
  ou
  
- usando swagger
+ * Usando Swagger
  
- http://localhost:8080/swagger-ui.html#/
+ import swagger: http://localhost:8080/v2/api-docs
  
- usando
- http://localhost:8080/swagger-ui.html#!/membro-controller/salvarUsingPOST
-    ```sh
+ acesso ui: http://localhost:8080/swagger-ui.html#/
+ 
+ salvar membro: http://localhost:8080/swagger-ui.html#!/membro-controller/salvarUsingPOST
+    ```
  {
   "idpessoa": 0,
   "idprojeto": 0
