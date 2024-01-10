@@ -3,16 +3,15 @@ Sistema para gerenciar os dados do portfólio de projetos de uma empresa. Entend
 
 ### Prerequisitos
 
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+* NPM
+* Angular 8
+* NodeJs
+* Java 16
+* Mavem
+* PostgreSQL
 
-* java 16
 
 ### Instalação
-
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
 
 1. Clone the repo
    ```sh
@@ -40,5 +39,41 @@ _Below is an example of how you can instruct your audience on installing and set
    ```
 7. Start serve
    ```sh
-   mvn pring-boot:run
+   mvn spring-boot:run
    ```
+
+### Detalhe
+
+Os serviços estão expostos em serviço web service REST.
+
+É possível associar um funcionário/membro qualquer já cadastrado a um projeto qualquer já cadastrado.
+ex: com curl
+   ```sh
+    curl --location 'http://localhost:8080/membro' \
+--header 'Content-Type: application/json' \
+--data '{
+    "idprojeto": 1,
+    "idpessoa": 2
+}'
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100    69    0    28  100    41   1141   1671 --:--:-- --:--:-- --:--:--  2875{"idprojeto":1,"idpessoa":2}
+
+   ```
+   
+ ou
+ 
+ usando swagger
+ 
+ http://localhost:8080/swagger-ui.html#/
+ 
+ usando
+ http://localhost:8080/swagger-ui.html#!/membro-controller/salvarUsingPOST
+    ```sh
+ {
+  "idpessoa": 0,
+  "idprojeto": 0
+}
+
+   ```
+   
